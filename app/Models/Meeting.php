@@ -2,10 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Meeting extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'desc',
+        'meeting_at',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id', __FUNCTION__);
+    }
 }
